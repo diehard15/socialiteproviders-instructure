@@ -11,7 +11,7 @@ class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'INSTRUCTURE';
 
-    protected $scopes = ['url:GET|/api/v1/users/:user_id/profile /auth/userinfo'];
+    protected $scopes = ['/auth/userinfo'];
 
     protected function getAuthUrl($state): string
     {
@@ -47,13 +47,7 @@ class Provider extends AbstractProvider
      */
     protected function mapUserToObject(array $user)
     {
-        return (new User)->setRaw($user)->map([
-            'id'       => $user['id'],
-            'nickname' => null,
-            'name'     => $user['name'],
-            'email'    => $user['primary_email'],
-            'avatar'   => null,
-        ]);
+
     }
 
     /**
