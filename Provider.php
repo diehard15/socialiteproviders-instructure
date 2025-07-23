@@ -11,7 +11,7 @@ class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'INSTRUCTURE';
 
-    protected $scopes = ['url:GET|/api/v1/users/:user_id/profile'];
+    protected $scopes = ['url:GET|/api/v1/users/:user_id/profile', '/auth/userinfo'];
 
     protected function getAuthUrl($state): string
     {
@@ -25,7 +25,7 @@ class Provider extends AbstractProvider
 
     protected function getTokenUrl(): string
     {
-        return $this->getInstanceUrl().'/login/oauth2/token';
+        return $this->getInstanceUrl().'/login/oauth2/token?replace_tokens=1';
     }
 
     /**
