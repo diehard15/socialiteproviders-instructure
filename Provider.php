@@ -11,7 +11,7 @@ class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'INSTRUCTURE';
 
-    protected $scopes = ['/auth/userinfo'];
+    protected $scopes = ['url:GET|/api/v1/users/:user_id/profile'];
 
     protected function getAuthUrl($state): string
     {
@@ -33,7 +33,7 @@ class Provider extends AbstractProvider
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->getInstanceUrl().'/auth/userinfo', [
+        $response = $this->getHttpClient()->get($this->getInstanceUrl().'/api/v1/users/:user_id/profile', [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
             ],
