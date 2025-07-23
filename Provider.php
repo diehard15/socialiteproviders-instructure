@@ -11,7 +11,7 @@ class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'INSTRUCTURE';
 
-    protected $scopes = ['url:GET|/api/v1/users/:user_id/profile'];
+    protected $scopes = ['/auth/userinfo url:GET|/api/v1/users/:user_id/profile'];
 
     protected function getAuthUrl($state): string
     {
