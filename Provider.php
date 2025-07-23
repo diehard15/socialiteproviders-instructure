@@ -33,7 +33,7 @@ class Provider extends AbstractProvider
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->getInstanceUrl().'/api/v1/users/self/profile', [
+        $response = $this->getHttpClient()->get($this->getInstanceUrl().'/auth/userinfo', [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
             ],
